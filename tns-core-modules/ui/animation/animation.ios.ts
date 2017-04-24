@@ -590,8 +590,8 @@ export class Animation extends AnimationBase {
 export function _getTransformMismatchErrorMessage(view: View): string {
     // Order is important: translate, rotate, scale
     let result: CGAffineTransform = CGAffineTransformIdentity;
-    const tx = layout.toDeviceIndependentPixels(Length.toDevicePixels(view.translateX || 0, 0));
-    const ty = layout.toDeviceIndependentPixels(Length.toDevicePixels(view.translateY || 0, 0));
+    const tx = view.translateX;
+    const ty = view.translateY;
     result = CGAffineTransformTranslate(result, tx, ty);
     result = CGAffineTransformRotate(result, (view.rotate || 0) * Math.PI / 180);
     result = CGAffineTransformScale(result, view.scaleX || 1, view.scaleY || 1);
